@@ -22,25 +22,28 @@ namespace MoodAnalyzer
 
         //Refactoring
         public string message;
-        //Default Constructor
-        public analyseMood()
-        {
-        }
         //Parameterised Constructor
         public analyseMood(string message)
         {
             this.message = message;
         }
 
-        public string AnalysingMood()
+        public string AnalysingMood() 
         {
-            if (message.ToLower().Contains("happy"))
+            try
+            {
+                if (message.ToLower().Contains("sad"))
+                {
+                    return "sad";
+                }
+                else
+                {
+                    return "happy";
+                }
+            }
+            catch
             {
                 return "happy";
-            }
-            else
-            {
-                return "sad";
             }
         }
     }
