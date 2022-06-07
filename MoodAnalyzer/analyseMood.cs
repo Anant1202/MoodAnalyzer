@@ -30,20 +30,40 @@ namespace MoodAnalyzer
 
         public string AnalysingMood() 
         {
+            //try
+            //{
+            //    if (message.ToLower().Contains("sad"))
+            //    {
+            //        return "sad";
+            //    }
+            //    else
+            //    {
+            //        return "happy";
+            //    }
+            //}
+            //catch
+            //{
+            //    return "happy";
+            //}
             try
             {
-                if (message.ToLower().Contains("sad"))
+                if (message.Equals(string.Empty))
                 {
-                    return "sad";
+                    throw new CustomException(CustomException.ExceptionType.EMPTY_EXCEPTION, "Mood should not be empty");
                 }
-                else
+
+                else if (message.ToLower().Contains("happy"))
                 {
                     return "happy";
                 }
+                else
+                {
+                    return "sad";
+                }
             }
-            catch
+            catch (NullReferenceException)
             {
-                return "happy";
+                throw new CustomException(CustomException.ExceptionType.NULL_EXCEPTION, "Mood should not be null");
             }
         }
     }
